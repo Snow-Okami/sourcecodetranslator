@@ -79,7 +79,36 @@ Using Atom with the Regex option checked in the Find in project box, use the fol
 
 After translating, on Windows simply go to the translation folder and copy it over the KBE source folder. Windows will prompt you to replace or skip the files that will overwrite the original KBE files; click replace. Once replacement has taken place, use an IDE to check for errors (I recommend [Visual Studio](https://visualstudio.microsoft.com/) for this project) letting Intellisense do the hard work for you. Also do note when compiling KBE, you need many of the C++ modules, as well as the CLR and MFC & ATL packages for x86 and x64. These can be installed via the Visual Studio Installer (by going to Install / Uninstall Programs -> Microsoft Visual Studio -> Modify)
 
+**New Files**
+
+pykbetransreplace - This file used like the others will do the replacements INPLACE. It requires the InPlace python addon [InPlace](https://pypi.org/project/in-place/) This should be the new preferred script as it is more foolproof than the copy method. It will ONLY replace lines with Chinese (mainly comments) and preserve everything else. This still requires for guiconsole to be replaced. They may be solved by putting some methods in place to skip some files that are sensitive to change. The main files here are the rc and window files.
+
+pykbefixes - This issues fixes that are caused by any of the translation scripts.
+
+pykbenamechange - This script will rename all names contained in scripts to a new name
+
+pykbefilerenamer - This script will attempt to rename files to the new file names it contains. It currently does NOT work. Use [Bulk-Rename](https://www.bulkrenameutility.co.uk/Main_Intro.php) for now to do any renaming. The script can be made to work if a method is incorporated to properly rename folders WHILE there are files still contained in them.
+
 Below is a list of problem areas that may need to be looked at if the project fails to compile.
+
+**Update 5/22/2019 Fixes**
+
+src/lib/network/bundle.h
+~525, 531 -> extra */))
+lib/common/platform.h
+~634 -> ?//
+src/lib/client_lib/clientobjectbase.h
+~504 -> ?//
+src/lib/network/http_utility.h
+~41 -> ??//
+src/lib/db_mysql/entity_table_mysql.cpp
+~43 -> */ :
+src/lib/client_lib/clientobjectbase.h
+~1240 -> ?//
+src/server/baseapp/entity_remotemethod.cpp
+~45 -> */ )
+src/lib/client_lib/entity.h
+~208 -> //   bool isControlled_
 
 **Replacement Paths (Problematic Areas)**
 

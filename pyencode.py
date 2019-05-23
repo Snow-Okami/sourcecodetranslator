@@ -8,8 +8,8 @@ import re
 import sys
 import codecs
 
-root = 'D:\PYSCT\ToEncode'
-newRoot = 'D:\PYSCT\Encoded'
+root = 'D:\Scratch\PyKBETrans\ToEncode'
+newRoot = 'D:\Scratch\PyKBETrans\Encoded'
 
 toEncoding = 'utf-8'
 chineseEncoding = 'GB2312'
@@ -78,4 +78,4 @@ for path, subdirs, files in os.walk(root):
 			except:
 				failedFiles += currentFile + '\n'
 				continue
-			print('Encoding: ' + currentFile + ' [' + str(currentDetectedEncoding) + '] To: ' + newFilePath)
+			print('Encoding: ' + currentFile + ' [' + str(currentDetectedEncoding) + '] To: ' + newFilePath + ' [' + toEncoding + ']')
